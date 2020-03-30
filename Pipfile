@@ -13,6 +13,7 @@ pytest-watch = "*"
 bs4 = "*"
 flask = "*"
 flask-restful = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
