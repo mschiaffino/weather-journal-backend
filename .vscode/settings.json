@@ -1,3 +1,6 @@
 {
-    "python.pythonPath": "/Users/martinschiaffino/.local/share/virtualenvs/weather-journal-backend-O3r62zj-/bin/python"
+  "python.pythonPath": "/Users/martinschiaffino/.local/share/virtualenvs/weather-journal-backend-O3r62zj-/bin/python",
+  "python.linting.pylintEnabled": false,
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.enabled": true
 }
