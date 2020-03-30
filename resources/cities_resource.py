@@ -1,3 +1,5 @@
+import concurrent.futures
+
 import requests
 from flask_restful import Resource
 
@@ -14,6 +16,7 @@ class CitiesResource(Resource):
         site_response = requests.get(STATIC_WEBSITE_URL)
         scraped_data = scrape_data(site_response.content)
 
-        cities = [get_named_city(city) for city in scraped_data]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            cities = list(executor.map(get_named_city, scraped_data))
 
-        return CitySchema().dump(cities, many=True)
+            return CitySchema().dump(cities, many=True)
