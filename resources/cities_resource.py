@@ -4,6 +4,8 @@ from flask_restful import Resource
 from scrapper.scrapper import scrape_data
 from utils.city_name import get_named_city
 
+from schemas.city_schema import CitySchema
+
 STATIC_WEBSITE_URL = 'https://app.deta.sh/hw6g4zdvlmao/'
 
 
@@ -14,4 +16,4 @@ class CitiesResource(Resource):
 
         cities = [get_named_city(city) for city in scraped_data]
 
-        return cities
+        return CitySchema().dump(cities, many=True)
