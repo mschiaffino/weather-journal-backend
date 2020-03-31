@@ -1,5 +1,5 @@
 from datetime import datetime
-from application import db
+from database.db import db
 
 
 class WeatherObservation(db.Model):
