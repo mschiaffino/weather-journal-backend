@@ -10,7 +10,8 @@ from database.db import db
 from resources.cities_resource import CitiesResource
 from resources.weather_observation_resource import WeatherObservationResource
 
-SQLITE_FILE_PATH = f'{os.path.abspath(os.path.dirname(__file__))}/database/wj.db'
+SQLITE_FILE_PATH = (f'{os.path.abspath(os.path.dirname(__file__))}'
+                    f'/database/wj.db')
 
 
 def create_app():
