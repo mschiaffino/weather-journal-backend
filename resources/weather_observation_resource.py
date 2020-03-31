@@ -8,7 +8,10 @@ from schemas.weather_observation_schema import WeatherObservationSchema
 
 class WeatherObservationResource(Resource):
     def get(self):
-        observations = WeatherObservation.query.all()
+        query = (WeatherObservation.query
+                 .order_by(WeatherObservation.datetime.desc()))
+
+        observations = query.all()
 
         return WeatherObservationSchema().dump(observations, many=True)
 
