@@ -11,6 +11,10 @@ class WeatherObservationResource(Resource):
         query = (WeatherObservation.query
                  .order_by(WeatherObservation.datetime.desc()))
 
+        city_filter = request.args.get('city')
+        if city_filter:
+            query = query.filter(WeatherObservation.city == city_filter)
+
         observations = query.all()
 
         return WeatherObservationSchema().dump(observations, many=True)
