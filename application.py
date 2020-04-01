@@ -23,6 +23,9 @@ def create_app():
 
     db.init_app(application)
 
+    if not db_file_exists():
+        setup_database(application)
+
     api = Api(application)
     api.add_resource(CitiesResource, '/cities')
     api.add_resource(WeatherObservationResource, '/observations')
@@ -39,10 +42,7 @@ def db_file_exists():
     return os.path.isfile(SQLITE_FILE_PATH)
 
 
+application = create_app()
+
 if __name__ == '__main__':
-    application = create_app()
-
-    if not db_file_exists():
-        setup_database(application)
-
-    application.run(debug=True)
+    application.run()
