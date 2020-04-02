@@ -7,7 +7,7 @@ class WeatherObservation(db.Model):
     city = db.Column(db.String, nullable=False)
     text = db.Column(db.String, nullable=False)
     datetime = db.Column(db.DateTime,
-                         nullable=False, default=datetime.now)
+                         nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
         return f'<WeatherObservation {self.id} {self.city} {self.text}>'
